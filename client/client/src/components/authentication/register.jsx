@@ -10,8 +10,8 @@ import { useAuth } from "../../context/authContext";
 
 import { toast } from "react-toastify";
 import Login from "./login";
-import LoginWithGoogle from "./loginWithGoogle";
-
+// import LoginWithGoogle from "./loginWithGoogle";
+import SignupWithGoogle from "./SignupWithGoogle";
 const Register = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -35,9 +35,7 @@ const Register = () => {
         .min(8)
         .max(1024)
         .required()
-        .regex(
-          " /^(?=.*[a-z])(?=.*[A-Z])(?=.*d{4,})(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$/"
-        ),
+        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*d{4,})(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$/),
     }),
     async onSubmit(values) {
       try {
@@ -54,7 +52,8 @@ const Register = () => {
     },
   });
   return (
-    <div className="w-100 m-auto d-flex justify-content-center mt-5">
+    <>
+        <div className="w-100 m-auto d-flex justify-content-center mt-5">
       <form
         noValidate
         onSubmit={form.handleSubmit}
@@ -99,6 +98,10 @@ const Register = () => {
         </button>
       </form>
     </div>
+       <div>
+      <SignupWithGoogle successCallback = {onsubmit}/>
+    </div>
+   </>
   );
 };
 

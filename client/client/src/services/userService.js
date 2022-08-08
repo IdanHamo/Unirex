@@ -17,6 +17,13 @@ export async function loginUser(user) {
   setTokenHeader();
 }
 
+/** find user by email, create if not exsists */
+export async function loginGoogleUser(user) {
+  const { data } = await httpService.post("/auth/google", user);
+  localStorage.setItem(tokenKey, data);
+  setTokenHeader();
+}
+
 export function getJWT() {
   return localStorage.getItem(tokenKey);
 }
