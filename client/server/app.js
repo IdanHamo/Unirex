@@ -15,7 +15,7 @@ const passportAuth = require("./routes/passport");
 require("./passport/passport");
 
 mongoose
-  .connect("mongodb://localhost/HackerU")
+  .connect("mongodb+srv://root:3xj210tr@mongo-db-dev.yttvg.mongodb.net/?retryWrites=true&w=majority")
   .then(() => console.log("successful connection"))
   .catch((e) => console.log("connection failed " + e));
 
