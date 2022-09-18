@@ -28,11 +28,23 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    image: {
+      type: String || Object,
+      default: "",
+    },
+    isGoogleUser: {
+      type: Boolean,
+      default: false,
+    },
     premium: {
       type: Boolean,
       required: true,
     },
-    favorites: { type: Array, required: true, ref: "Card" },
+    admin: {
+      type: Boolean,
+      required: true,
+    },
+    favorites: { type: Array, default: [] },
   },
   {
     methods: {
@@ -60,6 +72,7 @@ function validateUser(user) {
     password: Joi.string().required().min(8).max(1024),
     email: Joi.string().required().min(6).max(400),
     premium: Joi.boolean().required(),
+    admin: Joi.boolean().required(),
     favorites: Joi.array().required(),
   });
 
