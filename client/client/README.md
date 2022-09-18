@@ -34,6 +34,8 @@
     <p>Select an Image, after you choose click on upload.</p>
     <li>You can edit your custom recipes and delete them</li>
     <img src='/unirex-client/readmeImage/customRecipe.png'/>
+    <li>You can reset the password through the login</li>
+    <img src='/unirex-client/readmeImage/resetPassword.png'/>
 
 </ul>
 
