@@ -22,7 +22,15 @@ import ProtectedRoute from "./components/common/protectedRouth";
 import ProtectedRouteOnline from "./components/common/protectedRouthOnline";
 import Favorites from "./components/global/favorites";
 import ProtectedRouteOffline from "./components/common/protectedRouthOffline";
-import IdleTimerContainer from "./components/global/idleTimer";
+import Profile from "./components/global/profile";
+import ResetPassword from "./components/global/resetPassword";
+import ResetPasswordConfirm from "./components/global/reserPasswordConfirm";
+import Admin from "./components/admin/admin";
+import ProtectedRouteAdmin from "./components/common/protectedRouthAdmin";
+import UserContacts from "./components/admin/usersContacts";
+import FullContact from "./components/admin-contact-crud/fullContact";
+import DeleteContact from "./components/admin-contact-crud/deleteContact";
+import MostFavorite from "./components/admin/mostFav";
 
 function App() {
   return (
@@ -32,7 +40,7 @@ function App() {
         <header>
           <Nav />
         </header>
-        <div className="flex-fill container">
+        <div className="flex-fill">
           <Routes>
             <Route path="/" element={<Home></Home>}></Route>
             <Route path="/home" element={<Home></Home>}></Route>
@@ -41,17 +49,59 @@ function App() {
             <Route
               path="/recipes"
               element={
-                <ProtectedRouteOnline>
+                <div className="container">
                   <Recipes></Recipes>
-                </ProtectedRouteOnline>
+                </div>
+              }
+            ></Route>
+            <Route
+              path="/admin"
+              element={
+                <div className="container">
+                  <ProtectedRouteAdmin admin>
+                    <Admin></Admin>
+                  </ProtectedRouteAdmin>
+                </div>
+              }
+            ></Route>
+            <Route
+              path="/usersContacts"
+              element={
+                <div className="container">
+                  <ProtectedRouteAdmin admin>
+                    <UserContacts></UserContacts>
+                  </ProtectedRouteAdmin>
+                </div>
+              }
+            ></Route>
+            <Route
+              path="/usersContacts/contact/:id"
+              element={
+                <div className="container">
+                  <ProtectedRouteAdmin admin>
+                    <FullContact></FullContact>
+                  </ProtectedRouteAdmin>
+                </div>
+              }
+            ></Route>
+            <Route
+              path="/usersContacts/delete/:id"
+              element={
+                <div className="container">
+                  <ProtectedRouteAdmin admin>
+                    <DeleteContact></DeleteContact>
+                  </ProtectedRouteAdmin>
+                </div>
               }
             ></Route>
             <Route
               path="/favorites"
               element={
-                <ProtectedRouteOnline>
-                  <Favorites></Favorites>
-                </ProtectedRouteOnline>
+                <div className="container">
+                  <ProtectedRouteOnline>
+                    <Favorites></Favorites>
+                  </ProtectedRouteOnline>
+                </div>
               }
             ></Route>
             <Route
@@ -71,6 +121,22 @@ function App() {
               }
             ></Route>
             <Route
+              path="/resetPassword"
+              element={
+                <ProtectedRouteOffline>
+                  <ResetPassword></ResetPassword>
+                </ProtectedRouteOffline>
+              }
+            ></Route>
+            <Route
+              path="/resetPassword/:token"
+              element={
+                <ProtectedRouteOffline>
+                  <ResetPasswordConfirm></ResetPasswordConfirm>
+                </ProtectedRouteOffline>
+              }
+            ></Route>
+            <Route
               path="/logout"
               element={
                 <ProtectedRouteOnline>
@@ -79,8 +145,20 @@ function App() {
               }
             ></Route>
             <Route
+              path="/users/me/:id"
+              element={
+                <ProtectedRouteOnline>
+                  <Profile></Profile>
+                </ProtectedRouteOnline>
+              }
+            ></Route>
+            <Route
               path="/premium"
-              element={<PremiumRegistration></PremiumRegistration>}
+              element={
+                <ProtectedRouteOffline>
+                  <PremiumRegistration></PremiumRegistration>
+                </ProtectedRouteOffline>
+              }
             ></Route>
             <Route
               path="/myRecipes"
@@ -109,9 +187,9 @@ function App() {
             <Route
               path="/cards/fullRecipe/:id"
               element={
-                <ProtectedRoute prem>
-                  <FullRecipe></FullRecipe>
-                </ProtectedRoute>
+                <div className="container">
+                    <FullRecipe></FullRecipe>
+                </div>
               }
             ></Route>
             <Route
@@ -122,13 +200,22 @@ function App() {
                 </ProtectedRoute>
               }
             ></Route>
+            <Route
+              path="/mostFavorite"
+              element={
+                <ProtectedRouteAdmin admin>
+                  <div className="container">
+                    <MostFavorite></MostFavorite>
+                  </div>
+                </ProtectedRouteAdmin>
+              }
+            ></Route>
           </Routes>
         </div>
         <footer>
           <Footer></Footer>
         </footer>
       </div>
-      <IdleTimerContainer></IdleTimerContainer>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import recipesService from "../../services/recipesService";
+import crudService from "../../services/crudService";
 import { toast } from "react-toastify";
 
 const DeleteRecipe = () => {
@@ -9,7 +9,7 @@ const DeleteRecipe = () => {
 
   useEffect(() => {
     const deleteRecipe = async function () {
-      await recipesService.deleteRecipe(params.id);
+      await crudService.deleteRecipe(params.id);
       toast("recipe deleted successfully");
       navigate("/myRecipes");
     };

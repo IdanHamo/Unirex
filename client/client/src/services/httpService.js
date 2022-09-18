@@ -7,7 +7,7 @@ function setCommonHeader(headerName, value) {
   axios.defaults.headers[headerName] = value;
 }
 
-const http = {
+const httpService = {
   get: axios.get,
   post: axios.post,
   put: axios.put,
@@ -16,4 +16,4 @@ const http = {
   setCommonHeader,
 };
 
-export default http;
+export default httpService;

@@ -11,6 +11,7 @@ const Logout = ({ redirect }) => {
     logout();
     toast("logged out");
     redirect && navigate(redirect);
+    window.location.reload();
   }, []);
 
   return null;

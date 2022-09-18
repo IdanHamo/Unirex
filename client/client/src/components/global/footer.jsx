@@ -1,9 +1,6 @@
 const Footer = () => {
   return (
-    // <div className="container text-center">
-    //   <img className="footer-img d-inline" src="images/footer.png" alt="logo" />
-    //   <span>{new Date().getFullYear()} &copy;</span>
-    // </div>
+
     <footer className="d-flex flex-wrap justify-content-between align-items-center py-0 mt-5 border-top">
       <div className="col-md-4 d-flex align-items-center">
         <a
@@ -31,17 +28,25 @@ const Footer = () => {
 
       <ul className="nav col-md-4 justify-content-end list-unstyled d-flex me-3">
         <li className="ms-3">
-          <a className="text-muted" href="#">
+          <a className="text-info" target="_blank" href="https://twitter.com/">
             <i className="bi bi-twitter"></i>
           </a>
         </li>
         <li className="ms-3">
-          <a className="text-muted" href="#">
+          <a
+            className="text-danger"
+            target="_blank"
+            href="https://www.instagram.com/"
+          >
             <i className="bi bi-instagram"></i>
           </a>
         </li>
         <li className="ms-3">
-          <a className="text-muted" href="#">
+          <a
+            className="text-primary"
+            target="_blank"
+            href="https://www.facebook.com/"
+          >
             <i className="bi bi-facebook"></i>
           </a>
         </li>

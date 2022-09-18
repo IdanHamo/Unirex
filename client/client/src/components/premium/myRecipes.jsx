@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import recipesService from "../../services/recipesService";
+import recipesService from "../../services/crudService";
 import PageHeader from "../common/page-header";
 import RecipeCard from "../common/recipesCard";
 const MyRecipes = () => {
@@ -26,10 +26,12 @@ const MyRecipes = () => {
       <hr className="mt-5" />
       <h2 className="text-center mt-5">My recipes</h2>
 
-      <div className="row justify-content-around my-3">
-        {cards.map((card) => {
-          return <RecipeCard key={card._id} recipe={card}></RecipeCard>;
-        })}
+      <div className="container">
+        <div className="row justify-content-around my-3">
+          {cards.map((card) => {
+            return <RecipeCard key={card._id} recipe={card}></RecipeCard>;
+          })}
+        </div>
       </div>
     </>
   );

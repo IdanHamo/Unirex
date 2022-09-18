@@ -16,6 +16,12 @@ export async function loginUser(user) {
   localStorage.setItem(tokenKey, data);
   setTokenHeader();
 }
+export async function loginGoogleUser(user) {
+  const { data } = await httpService.post("/auth/google", user);
+  localStorage.setItem(tokenKey, data.token);
+  setTokenHeader();
+  return data;
+}
 
 export function getJWT() {
   return localStorage.getItem(tokenKey);
@@ -34,6 +40,10 @@ export function logoutUser() {
   localStorage.removeItem(tokenKey);
   setTokenHeader();
 }
+export async function contactUs(info) {
+  const { data } = await httpService.post("/contact", info);
+  return data;
+}
 
 const usersService = {
   createUser,
@@ -41,6 +51,8 @@ const usersService = {
   getJWT,
   getUser,
   logoutUser,
+  loginGoogleUser,
+  contactUs,
 };
 
 export default usersService;
