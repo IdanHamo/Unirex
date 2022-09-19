@@ -58,7 +58,7 @@ router.post("/", async (req, res) => {
       const mailOptions = {
         from: "unirexcontact@gmail.com",
         to: userEmail,
-        subject: "hello",
+        subject: "Reset Password",
         text: "success",
         html: `<a href='http://localhost:3000/resetPassword/${token}'>reset link</a>`,
       };
