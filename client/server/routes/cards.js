@@ -36,10 +36,11 @@ router.put("/editRecipe/:id", auth, async (req, res) => {
   const { error } = validateCard(req.body);
   console.log(req.body);
   if (error) return res.status(404).send(error.details[0].message);
-  const cardy = await Card.findOne({ _id: req.params.id });
+  // const cardy = await Card.findOne({ _id: req.params.id });
+  // console.log(cardy);
   let card = await Card.findOneAndUpdate(
     { _id: req.params.id, user_id: req.user._id },
-    { ...req.body, ...cardy }
+    { ...req.body }
   );
 
   if (!card)
